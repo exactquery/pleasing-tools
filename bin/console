@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+date_default_timezone_set('UTC');
+
+set_time_limit(0);
+
+$dir = __DIR__ . '/..';
+require_once $dir.'/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use XQ\Command as Command;
+
+$command[] = new XQ\Pleasing\Tools\Command\PleasingPackageCommand();
+$command[] = new XQ\Pleasing\Tools\Command\PleasingVersionCommand();
+$app = new Application('Pleasing Tools', 'v1.0');
+$app->addCommands($command);
+$app->run();

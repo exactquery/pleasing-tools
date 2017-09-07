@@ -1,0 +1,29 @@
+{
+  "name": "exactquery/pleasing-tools",
+  "version": "1.0",
+  "type": "project",
+  "description": "Various tools for managing projects.",
+  "autoload": {
+    "psr-4": {
+      "XQ\\Pleasing\\Tools\\": "src/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.rackx.com"
+    }
+  ],
+  "require": {
+    "exactquery/xq-command": "dev-master",
+    "symfony/yaml": "^3.3",
+    "exactquery/pleasing": "^1.5",
+    "composer/semver": "^1.4"
+  },
+  "config": {
+    "secure-http": false,
+    "bin-dir": "bin"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
