@@ -17,8 +17,8 @@
   "require": {
     "exactquery/xq-command": "dev-master",
     "symfony/yaml": "^3.3",
-    "exactquery/pleasing": "^1.5",
-    "composer/semver": "^1.4"
+    "composer/semver": "^1.4",
+    "exactquery/pleasing": "^2.0"
   },
   "config": {
     "secure-http": false,
