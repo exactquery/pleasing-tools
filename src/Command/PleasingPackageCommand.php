@@ -108,7 +108,7 @@ class PleasingPackageCommand extends AbstractPleasingCommand
       $collection[] = $this->Pleasing()->buildFileAsset( $input, $filters );
     }
 
-    $AssetCollection = $this->Pleasing()->buildAssetCollection($collection, true);
+    $AssetCollection = $this->Pleasing()->buildAssetCollection($collection, $asset['output']);
     if ( $assetCode = $AssetCollection->dump() )
     {
       $this->validatedPath( pathinfo( $asset[ 'output' ], PATHINFO_DIRNAME ) );
