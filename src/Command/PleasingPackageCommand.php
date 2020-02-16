@@ -13,7 +13,12 @@ use XQ\Pleasing\Pleasing;
 use XQ\Pleasing\Traits\PleasingCompileTrait;
 
 /**
+ * Packages assets according to the given configuration.
+ *
  * Class PleasingPackageCommand
+ *
+ * @version v1.1
+ * @author  Aaron M Jones <am@jonesiscoding.com>
  * @package DevCoding\Pleasing\Command
  */
 class PleasingPackageCommand extends AbstractPleasingCommand

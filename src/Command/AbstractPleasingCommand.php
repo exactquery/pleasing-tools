@@ -5,11 +5,19 @@
 
 namespace DevCoding\Pleasing\Tools\Command;
 
-
 use Symfony\Component\Yaml\Yaml;
 use DevCoding\Command\Base\AbstractConsole;
 use XQ\Pleasing\Pleasing;
 
+/**
+ * Base class on which other Pleasing console commands are based.
+ *
+ * Class AbstractPleasingCommand
+ *
+ * @version v1.1
+ * @author  Aaron M Jones <am@jonesiscoding.com>
+ * @package DevCoding\Pleasing\Tools\Command
+ */
 class AbstractPleasingCommand extends AbstractConsole
 {
   /** @var Pleasing */

@@ -10,7 +10,12 @@ use DevCoding\Command\Base\AbstractConsole;
 use DevCoding\Pleasing\Tools\Entity\SemanticVersion;
 
 /**
+ * Increments version numbers found within the files of a project.
+ *
  * Class PleasingVersionCommand
+ *
+ * @version v1.1
+ * @author  Aaron M Jones <am@jonesiscoding.com>
  * @package XQ\Projects\Command
  */
 class PleasingVersionCommand extends AbstractConsole
