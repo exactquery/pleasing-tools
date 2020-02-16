@@ -119,6 +119,37 @@ class PleasingPackageCommand extends AbstractPleasingCommand
     return false;
   }
 
+  protected function getConfig()
+  {
+    $config = parent::getConfig();
+
+    if(!array_key_exists('filters', $config))
+    {
+      $config['filters'] = array();
+    }
+
+    if(!array_key_exists('minify', $config['filters'])) {
+      $config['filters']['minify'] = array( 'class' => PleasingMinifyFilter::class );
+    }
+
+    if(!array_key_exists('scss', $config['filters'])) {
+      $config['filters']['scss'] = array(
+        'bin' => '/usr/bin/sassc',
+        'class' => PleasingSassFilter::class,
+        'apply_to' => '\.scss',
+      );
+    }
+
+    if(!array_key_exists('prefix')) {
+      $config['filters']['prefix'] = array(
+        'class' => PleasingPrefixFilter::class,
+        'apply_to' => '\.scss|\.css'
+      );
+    }
+
+    return $config;
+  }
+
   private function validateConfig( $config )
   {
     return true;
