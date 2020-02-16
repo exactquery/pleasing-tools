@@ -1,13 +1,13 @@
 <?php
 
-namespace XQ\Pleasing\Tools\Entity;
+namespace DevCoding\Pleasing\Tools\Entity;
 
 use Composer\Semver\VersionParser;
 
 
 /**
  * Class SemanticVersion
- * @package XQ\Pleasing\Entity
+ * @package DevCoding\Pleasing\Entity
  */
 class SemanticVersion
 {

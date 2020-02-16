@@ -1,6 +1,6 @@
 <?php
 
-namespace XQ\Pleasing\Tools\Command;
+namespace DevCoding\Pleasing\Tools\Command;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,7 +11,7 @@ use XQ\Pleasing\Traits\PleasingCompileTrait;
 
 /**
  * Class PleasingPackageCommand
- * @package XQ\Pleasing\Command
+ * @package DevCoding\Pleasing\Command
  */
 class PleasingPackageCommand extends AbstractPleasingCommand
 {

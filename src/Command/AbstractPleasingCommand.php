@@ -3,14 +3,14 @@
  * AbstractPleasingCommand.php
  */
 
-namespace XQ\Pleasing\Tools\Command;
+namespace DevCoding\Pleasing\Tools\Command;
 
 
 use Symfony\Component\Yaml\Yaml;
-use XQ\Command\AbstractCommand;
+use DevCoding\Command\Base\AbstractConsole;
 use XQ\Pleasing\Pleasing;
 
-class AbstractPleasingCommand extends AbstractCommand
+class AbstractPleasingCommand extends AbstractConsole
 {
   /** @var Pleasing */
   protected $_Pleasing;

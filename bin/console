@@ -11,8 +11,8 @@ require_once $dir.'/vendor/autoload.php';
 use Symfony\Component\Console\Application;
 use XQ\Command as Command;
 
-$command[] = new XQ\Pleasing\Tools\Command\PleasingPackageCommand();
-$command[] = new XQ\Pleasing\Tools\Command\PleasingVersionCommand();
-$app = new Application('Pleasing Tools', 'v1.0');
+$command[] = new DevCoding\Pleasing\Tools\Command\PleasingPackageCommand();
+$command[] = new DevCoding\Pleasing\Tools\Command\PleasingVersionCommand();
+$app = new Application('Pleasing Tools', 'v1.0.1');
 $app->addCommands($command);
 $app->run();

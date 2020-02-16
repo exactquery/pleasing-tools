@@ -1,19 +1,19 @@
 <?php
 
-namespace XQ\Pleasing\Tools\Command;
+namespace DevCoding\Pleasing\Tools\Command;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use XQ\Command\AbstractCommand;
-use XQ\Pleasing\Tools\Entity\SemanticVersion;
+use DevCoding\Command\Base\AbstractConsole;
+use DevCoding\Pleasing\Tools\Entity\SemanticVersion;
 
 /**
  * Class PleasingVersionCommand
  * @package XQ\Projects\Command
  */
-class PleasingVersionCommand extends AbstractCommand
+class PleasingVersionCommand extends AbstractConsole
 {
   protected $_Version;
 
