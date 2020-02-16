@@ -16,7 +16,10 @@
     "jonesiscoding/pleasing": "^2.1"
   },
   "config": {
-    "bin-dir": "bin"
+    "bin-dir": "bin",
+    "platform": {
+      "php": "7.1.33"
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true
