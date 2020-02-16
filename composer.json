@@ -9,6 +9,7 @@
     }
   },
   "require": {
+    "php": "^7.1",
     "symfony/yaml": "^3.3",
     "composer/semver": "^1.4",
     "jonesiscoding/base-console": "^1.0",
