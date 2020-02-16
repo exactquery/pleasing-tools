@@ -6,6 +6,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use XQ\Pleasing\Filter\PleasingMinifyFilter;
+use XQ\Pleasing\Filter\PleasingPrefixFilter;
+use XQ\Pleasing\Filter\PleasingSassFilter;
 use XQ\Pleasing\Pleasing;
 use XQ\Pleasing\Traits\PleasingCompileTrait;
 
@@ -17,7 +20,21 @@ class PleasingPackageCommand extends AbstractPleasingCommand
 {
   use PleasingCompileTrait;
 
-  const USE_CONFIG = '__USECONFIG__';
+  const USE_CONFIG    = '__USECONFIG__';
+  const FILTER_CONFIG = array(
+      'minify' => array( 'class' => PleasingMinifyFilter::class ),
+      'sass'   => array(
+          'bin'          => '',
+          'import_paths' => array( 'vendor/' ),
+          'output_style' => 'expanded',
+          'class'        => PleasingSassFilter::class,
+          'apply_to'     => '\.scss|\.sass',
+      ),
+      'prefix' => array(
+          'class'    => PleasingPrefixFilter::class,
+          'apply_to' => '\.scss|\.css'
+      )
+  );
 
   protected $config = array();
 
@@ -119,32 +136,77 @@ class PleasingPackageCommand extends AbstractPleasingCommand
     return false;
   }
 
+  /**
+   * Override to add default filters
+   *
+   * @return array
+   */
   protected function getConfig()
   {
-    $config = parent::getConfig();
+    return $this->mergeDefaultFilters( parent::getConfig() );
+  }
 
-    if(!array_key_exists('filters', $config))
+  /**
+   * Adds the default filters to the given pleasing configuration.
+   *
+   * If the configuration does not contain a filters array, the defaults are added.
+   *
+   * If the configuration contains a filters array, and the filters described in the configuration match the keys in
+   * the defaults array, any missing keys in the defaults are added to the given configuration, but only if the
+   * value in the 'class' key does not differ.
+   *
+   * @param array $config
+   *
+   * @return array
+   */
+  protected function mergeDefaultFilters( $config )
+  {
+    $filters = ( !empty( $config[ 'pleasing' ][ 'filters' ] ) ) ? $config[ 'pleasing' ][ 'filters' ] : array();
+    $default = $this->getDefaultFilterConfig();
+
+    if( empty( $filters ) )
     {
-      $config['filters'] = array();
+      $filters = $default;
+    }
+    else
+    {
+      foreach( $filters as $key => $filter )
+      {
+        if( !empty( $default[ $key ] ) )
+        {
+          $dFilter = $default[ $key ];
+          if( empty( $filter[ 'class' ]) || $filter[ 'class' ] === $dFilter['class'] )
+          {
+            $filters[ $key ] = $dFilter + $filter;
+          }
+        }
+      }
     }
 
-    if(!array_key_exists('minify', $config['filters'])) {
-      $config['filters']['minify'] = array( 'class' => PleasingMinifyFilter::class );
-    }
+    $config['pleasing']['filters'] = $filters;
 
-    if(!array_key_exists('scss', $config['filters'])) {
-      $config['filters']['scss'] = array(
-        'bin' => '/usr/bin/sassc',
-        'class' => PleasingSassFilter::class,
-        'apply_to' => '\.scss',
-      );
-    }
+    return $config;
+  }
 
-    if(!array_key_exists('prefix')) {
-      $config['filters']['prefix'] = array(
-        'class' => PleasingPrefixFilter::class,
-        'apply_to' => '\.scss|\.css'
-      );
+  /**
+   * Retrieves the default filter configuration, and adds the path to the sassc binary, if it can be determined.
+   *
+   * @return array
+   */
+  protected function getDefaultFilterConfig()
+  {
+    $config = self::FILTER_CONFIG;
+
+    if( !empty( $config[ 'sass' ] ) )
+    {
+      try
+      {
+        $config[ 'sass' ][ 'bin' ] = trim( $this->getBinaryPath( 'sassc' ) );
+      }
+      catch(\Exception $e)
+      {
+
+      }
     }
 
     return $config;
