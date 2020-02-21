@@ -14,7 +14,7 @@ use XQ\Pleasing\Pleasing;
  *
  * Class AbstractPleasingCommand
  *
- * @version v1.1
+ * @version v1.1.1
  * @author  Aaron M Jones <am@jonesiscoding.com>
  * @package DevCoding\Pleasing\Tools\Command
  */

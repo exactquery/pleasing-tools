@@ -1,6 +1,6 @@
 {
   "name": "jonesiscoding/pleasing-tools",
-  "version": "1.1",
+  "version": "1.1.1",
   "type": "project",
   "description": "Various tools for managing projects.",
   "autoload": {
@@ -12,7 +12,7 @@
     "php": "^7.1",
     "symfony/yaml": "^3.3",
     "composer/semver": "^1.4",
-    "jonesiscoding/base-console": "^1.0",
+    "jonesiscoding/base-console": "^1.0.2",
     "jonesiscoding/pleasing": "^2.1"
   },
   "config": {
