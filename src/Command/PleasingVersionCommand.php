@@ -14,7 +14,7 @@ use DevCoding\Pleasing\Tools\Entity\SemanticVersion;
  *
  * Class PleasingVersionCommand
  *
- * @version v1.1.1
+ * @version v1.1.2
  * @author  Aaron M Jones <am@jonesiscoding.com>
  * @package XQ\Projects\Command
  */

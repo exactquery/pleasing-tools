@@ -17,7 +17,7 @@ use XQ\Pleasing\Traits\PleasingCompileTrait;
  *
  * Class PleasingPackageCommand
  *
- * @version v1.1.1
+ * @version v1.1.2
  * @author  Aaron M Jones <am@jonesiscoding.com>
  * @package DevCoding\Pleasing\Command
  */
